@@ -1,0 +1,673 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+PS3
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lyx short cuts english.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Problem 3-1
+\end_layout
+
+\begin_layout Subsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+The requirement of the data structure is:
+\end_layout
+
+\begin_layout Standard
+- insertion in sublinear time
+\end_layout
+
+\begin_layout Standard
+- finding minimum and maximum in sublinear time
+\end_layout
+
+\begin_layout Standard
+The data structure which fits these requirements are the AVL tree, which
+ allows insertion, finding the minimum item and maximum item in 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+, where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of items.
+\end_layout
+
+\begin_layout Subsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+It will take 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ time to insert a key in the range index.
+\end_layout
+
+\begin_layout Subsection*
+(c)
+\end_layout
+
+\begin_layout Standard
+It will take 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ time find the minimum key in the range index.
+ (You keep going from the root to the leaves in the left child nodes until
+ you reach a node which doesn't have a left child node).
+\end_layout
+
+\begin_layout Subsection*
+(d)
+\end_layout
+
+\begin_layout Standard
+It will take 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ time find the maximum key in the range index.
+ (You keep going from the root to the leaves in the right child nodes until
+ you reach a node which doesn't have a right child node).
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+Rank
+\begin_inset Formula $\b l$
+\end_inset
+
+ counts all the keys for which 
+\begin_inset Formula $x\leq l$
+\end_inset
+
+.
+ The number of nodes between (including) 
+\begin_inset Formula $l$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ when both 
+\begin_inset Formula $l$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ exist as an index 
+\begin_inset Formula 
+\[
+\text{Count}\b{l,h}=\text{Rank}\b h-\text{Rank}\b l+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since rank doesn't count the node itself but when evaluating 
+\begin_inset Formula $\text{Rank}\b h-\text{Rank}\b l$
+\end_inset
+
+ it does count the the node with the key 
+\begin_inset Formula $l$
+\end_inset
+
+ but not the node with key 
+\begin_inset Formula $h$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+(f)
+\end_layout
+
+\begin_layout Standard
+If doesn't 
+\begin_inset Formula $l$
+\end_inset
+
+ doesnt't exist in the index but 
+\begin_inset Formula $h$
+\end_inset
+
+ does, the answer changes to: 
+\begin_inset Formula 
+\[
+\text{Count}\b{l,h}=\text{Rank}\b h-\text{Rank}\b l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(g)
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $l$
+\end_inset
+
+ exists in the index but 
+\begin_inset Formula $h$
+\end_inset
+
+ doesn't, we have:
+\begin_inset Formula 
+\[
+\text{Count}\b{l,h}=\text{Rank}\b h-\text{Rank}\b l+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(h)
+\end_layout
+
+\begin_layout Standard
+If neither 
+\begin_inset Formula $l$
+\end_inset
+
+ or 
+\begin_inset Formula $h$
+\end_inset
+
+ exist in the index we have:
+\begin_inset Formula 
+\[
+\text{Count}\b{l,h}=\text{Rank}\b h-\text{Rank}\b l
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(i)
+\end_layout
+
+\begin_layout Standard
+In order to respond to 
+\begin_inset Formula $\text{Rank}\b{}$
+\end_inset
+
+ queries in sublinear time, we augment an extra field to each node 
+\begin_inset Formula $node.\gamma$
+\end_inset
+
+ which means the number of nodes in the subtree rooted at 
+\begin_inset Formula $node$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection*
+(j)
+\end_layout
+
+\begin_layout Standard
+The aumentation requires 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ bits of storage per node, since it requires 
+\begin_inset Formula $\log\b N$
+\end_inset
+
+ bits to encode the possible values of 
+\begin_inset Formula $\text{Rank}\b{}$
+\end_inset
+
+ numbers 
+\begin_inset Formula $1,2,\dots,N$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+(k)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N_{4}.\gamma=1$
+\end_inset
+
+ since 
+\begin_inset Formula $N_{4}$
+\end_inset
+
+ is a leaf, the subtree rooted at 
+\begin_inset Formula $N_{4}$
+\end_inset
+
+ has a single node.
+\end_layout
+
+\begin_layout Subsection*
+(l)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N_{3}.\gamma=3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(m)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N_{2}.\gamma=6$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(n)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $N_{1}.\gamma=10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(o)
+\end_layout
+
+\begin_layout Standard
+The functions which need to be modified are only: ROTATE-LEFT, ROTATE-RIGHT
+ and REBALANCE.
+\end_layout
+
+\begin_layout Standard
+INSERT AND DELETE apply rotate left and right which already will modify
+ 
+\begin_inset Formula $node.\gamma$
+\end_inset
+
+ , and we are using a AVL tree so there is no method HEAPIFY for this data
+ structure.
+\end_layout
+
+\begin_layout Subsection*
+(p)
+\end_layout
+
+\begin_layout Standard
+The running time of 
+\begin_inset Formula $\text{Rank}\b{}$
+\end_inset
+
+ is 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+, using the 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ atribute.
+ As a result, 
+\begin_inset Formula $\text{Count}\b{}$
+\end_inset
+
+ is also 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+(q)
+\end_layout
+
+\begin_layout Standard
+LCA most likely means: lowest common ancestor.
+ LCA pseudo code return the node closest to the root which is between 
+\begin_inset Formula $l$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+(r)
+\end_layout
+
+\begin_layout Standard
+The running time of 
+\begin_inset Formula $\text{LCA}\b{l,h}$
+\end_inset
+
+ is 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ as it basically performs a (conditional) search going from the root down
+ to the leafs.
+\end_layout
+
+\begin_layout Subsection*
+(s)
+\end_layout
+
+\begin_layout Standard
+The running time is 
+\begin_inset Formula $O\b{\log\b N+O\b L}$
+\end_inset
+
+, since what 
+\begin_inset Formula $\text{Node-List}\b{}$
+\end_inset
+
+ does is either appends a key to the list or ignores a branch of the tree,
+ while advancing from the lowest common ansector of 
+\begin_inset Formula $l$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ down to the leas.
+ The number of branches ignored scale as the height of the tree and the
+ number of keys added equals the list size, 
+\begin_inset Formula $L$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+(t)
+\end_layout
+
+\begin_layout Standard
+Since the running times of LCA and NODE-LIST are 
+\begin_inset Formula $O\b{\log\b N}$
+\end_inset
+
+ and 
+\begin_inset Formula $O\b{\log\b N+O\b L}$
+\end_inset
+
+ the total running time of LIST is 
+\begin_inset Formula $O\b{\log\b N+O\b L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Problem 3-2
+\end_layout
+
+\begin_layout Subsection*
+(a)
+\end_layout
+
+\begin_layout Standard
+Running circuit2.py with tests/10grid_s.in as input.
+ The method with the highest CPU usage is: 
+\begin_inset Quotes eld
+\end_inset
+
+intersects
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(b)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+intersects
+\begin_inset Quotes erd
+\end_inset
+
+ method is called 187509314 times.
+\end_layout
+
+\begin_layout Subsection*
+(c)
+\end_layout
+
+\begin_layout Standard
+The x-coordinates of points of interest in the input are both end points
+ of horizontal and vertical wires.
+ Crossing points are not points of interest but the output of the method.
+\end_layout
+
+\begin_layout Subsection*
+(d)
+\end_layout
+
+\begin_layout Standard
+When the sweep line hits the x-coordinate of the left endpoint of a horizontal
+ wire it adds the wire to the range index.
+\end_layout
+
+\begin_layout Subsection*
+(e)
+\end_layout
+
+\begin_layout Standard
+When the sweep line hits the x coordinate of the right endpoint of a horizontal
+ wire, the wire is removed from the range index.
+\end_layout
+
+\begin_layout Subsection*
+(f)
+\end_layout
+
+\begin_layout Standard
+When the sweep line hits the mid-point of a horizontal wire nothing happens.
+\end_layout
+
+\begin_layout Subsection*
+(g)
+\end_layout
+
+\begin_layout Standard
+When the sweep line hits the 
+\begin_inset Formula $x$
+\end_inset
+
+ coordinate of the vertical wire a range index query is performed.
+\end_layout
+
+\begin_layout Subsection*
+(h) 
+\end_layout
+
+\begin_layout Standard
+The good invariant for sweep-line algorithm holds all the horizontal wires
+ stabbed by the sweep line
+\end_layout
+
+\begin_layout Subsection*
+(i)
+\end_layout
+
+\begin_layout Standard
+When a wire is added to the range index, the corresponding key is the 
+\begin_inset Formula $y$
+\end_inset
+
+ coordinate of the wire's midpoint.
+\end_layout
+
+\begin_layout Subsection*
+(j)
+\end_layout
+
+\begin_layout Standard
+The method with the highest CPU usage is 
+\begin_inset Quotes eld
+\end_inset
+
+count
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+(k)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Quotes eld
+\end_inset
+
+count
+\begin_inset Quotes erd
+\end_inset
+
+ is called 
+\begin_inset Formula $20,000$
+\end_inset
+
+ times.
+\end_layout
+
+\begin_layout Subsection*
+(l)
+\end_layout
+
+\begin_layout Standard
+The Python codes appear in the files AVL_index_range.py and circuit2.py.
+\end_layout
+
+\end_body
+\end_document
