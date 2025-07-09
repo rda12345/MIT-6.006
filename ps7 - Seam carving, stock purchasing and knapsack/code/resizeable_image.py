@@ -11,16 +11,21 @@ class ResizeableImage(imagematrix.ImageMatrix):
             The funciton applies a bottom up approach starting from the top row,
             and going down.
             
-            Parameters:
-                imagematrix.ImageMatrix:   COMPLETE....
+            Pixel images i,j refer to an element in the j'th row and i'th
+            column.
             
-                                                     
+            Parameters:
+                self.width: int, image width
+                self.height: int,  image height
+                self.energy: function, evaluates the energy of the (i,j) pixel
+                                    of the image
+                dp: dict, mapping pairs i,j to the accumulated energy of the best
+                            seam ending in pixel (i,j)
+            Returns:
+                best_seam: list, containing tuples (i,j) from j=0 
+                                to j = self.width - 1, indicating the pixels
+                                of the best vertical seam.
         """
-        # Set dp[:][0], noted that the notation of row and columns here is reversed,
-        # meaning that the dp[i][j] refers to the element in the j'th row and i'th
-        # column.
-        #print(f'width = {self.width}')
-        #print(f'height = {self.height}')
         dp = {}
         parents = {} 
         for i in range(self.width):
@@ -31,7 +36,7 @@ class ResizeableImage(imagematrix.ImageMatrix):
         for j in range(1,self.height):
             for i in range(self.width):
                 current_energy = self.energy(i,j)
-            # handle boundary conditions
+                # handle boundary conditions
                 if i == 0:
                     dp[i,j] = min(dp[i,j-1],dp[i+1,j-1]) + current_energy
                     if dp[i,j-1] > dp[i+1,j-1]: parents[(i,j)] = (i+1,j-1)
@@ -40,6 +45,7 @@ class ResizeableImage(imagematrix.ImageMatrix):
                     dp[i,j] = min(dp[i,j-1],dp[i-1,j-1]) + current_energy
                     if dp[i,j-1] > dp[i-1,j-1]: parents[(i,j)] = (i-1,j-1)
                     else: parents[(i,j)] = (i,j-1)
+                # pixel in the interior of the image
                 else:
                     dp[i,j] = min(dp[i-1,j-1],dp[i,j-1],dp[i+1,j-1]) + current_energy
                     if dp[i,j-1] > dp[i-1,j-1]: 
@@ -51,6 +57,8 @@ class ResizeableImage(imagematrix.ImageMatrix):
         last_row = [dp[i,self.height-1] for i in range(self.width)]                 
         best_index = last_row.index(min(last_row))
         
+        # following the parent pointers evaluate the best seam (following the
+        # topological sort in reverse order).
         tup = (best_index,self.height-1)
         best_seam = [tup]
         for j in range(self.height-1):
